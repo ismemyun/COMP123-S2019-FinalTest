@@ -9,7 +9,6 @@ namespace COMP123_S2019_FinalTestC
 {
     public static class Program
     {
-        //temporary
         public static CharacterGeneratorForm characterForm;
 
 
