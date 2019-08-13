@@ -15,9 +15,30 @@ namespace COMP123_S2019_FinalTestC.Views
             InitializeComponent();
         }
 
+        /// <summary>
+        /// This is the event handler for the NextButton Click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NextButton_Click(object sender, EventArgs e)
         {
+            if (MainTabControl.SelectedIndex < MainTabControl.TabPages.Count - 1)
+            {
+                MainTabControl.SelectedIndex++;
+            }
+        }
 
+        /// <summary>
+        /// This is the event handler for the BackButton Click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            if (MainTabControl.SelectedIndex != 0)
+            {
+                MainTabControl.SelectedIndex--;
+            }
         }
     }
 }
