@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COMP123_S2019_FinalTestC.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,17 +7,25 @@ using System.Windows.Forms;
 
 namespace COMP123_S2019_FinalTestC
 {
-    static class Program
+    public static class Program
     {
+        //temporary
+        public static CharacterGeneratorForm characterForm;
+
+
+        
+
         /// <summary>
-        /// 應用程式的主要進入點。
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            characterForm = new CharacterGeneratorForm();
+            Application.Run(characterForm);
         }
     }
 }
