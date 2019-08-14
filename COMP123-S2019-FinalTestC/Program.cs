@@ -9,7 +9,7 @@ using System.Windows.Forms;
 /*
  * Student name:Chuyun Yang
  * Student Id:301038102
- * description: This is the main class for this project.
+ * description: The project that generates the first few pages of a Role-Playing Game Character..
  */
 namespace COMP123_S2019_FinalTestC
 {
@@ -20,6 +20,7 @@ namespace COMP123_S2019_FinalTestC
         public static CharacterPortfolio character;
         public static Identity identity;
         public static Skill skill;
+        public static AboutForm aboutForm;
 
 
 
@@ -37,7 +38,8 @@ namespace COMP123_S2019_FinalTestC
             characterForm = new CharacterGeneratorForm();
             identity = new Identity();
             skill = new Skill();
-            //character = new CharacterPortfolio();
+            character = new CharacterPortfolio();
+            aboutForm = new AboutForm();
             Application.Run(characterForm);
         }
     }

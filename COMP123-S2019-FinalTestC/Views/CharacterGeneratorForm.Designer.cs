@@ -62,23 +62,7 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BackButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
@@ -89,6 +73,15 @@
             this.Skill3Label = new System.Windows.Forms.Label();
             this.Skill4Label = new System.Windows.Forms.Label();
             this.GenerateSkillsButton = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.CharacterTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.CharacterLastNameLabel = new System.Windows.Forms.Label();
+            this.CharacterFirstNameLabel = new System.Windows.Forms.Label();
+            this.CharacterSkill1Label = new System.Windows.Forms.Label();
+            this.CharacterSkill2Label = new System.Windows.Forms.Label();
+            this.CharacterSkill3Label = new System.Windows.Forms.Label();
+            this.CharacterSkill4Label = new System.Windows.Forms.Label();
             this.MainTabControl.SuspendLayout();
             this.IdentityPage.SuspendLayout();
             this.IdentityTableLayoutPanel.SuspendLayout();
@@ -98,6 +91,7 @@
             this.CharacterSheetPage.SuspendLayout();
             this.MainMenuStrip.SuspendLayout();
             this.SkillTableLayoutPanel.SuspendLayout();
+            this.CharacterTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainTabControl
@@ -439,6 +433,7 @@
             // 
             // CharacterSheetPage
             // 
+            this.CharacterSheetPage.Controls.Add(this.CharacterTableLayoutPanel);
             this.CharacterSheetPage.Controls.Add(this.MainToolStrip);
             this.CharacterSheetPage.Controls.Add(this.MainMenuStrip);
             this.CharacterSheetPage.Location = new System.Drawing.Point(4, 32);
@@ -461,8 +456,6 @@
             // 
             this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.toolsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
@@ -488,13 +481,14 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
             // 
             // saveToolStripMenuItem
             // 
@@ -502,153 +496,36 @@
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.selectAllToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.editToolStripMenuItem.Text = "&Edit";
-            // 
-            // undoToolStripMenuItem
-            // 
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.undoToolStripMenuItem.Text = "&Undo";
-            // 
-            // redoToolStripMenuItem
-            // 
-            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.redoToolStripMenuItem.Text = "&Redo";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(145, 6);
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
-            this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.cutToolStripMenuItem.Text = "Cu&t";
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
-            this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.copyToolStripMenuItem.Text = "&Copy";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripMenuItem.Image")));
-            this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.pasteToolStripMenuItem.Text = "&Paste";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(145, 6);
-            // 
-            // selectAllToolStripMenuItem
-            // 
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.selectAllToolStripMenuItem.Text = "Select &All";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customizeToolStripMenuItem,
-            this.optionsToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.toolsToolStripMenuItem.Text = "&Tools";
-            // 
-            // customizeToolStripMenuItem
-            // 
-            this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.customizeToolStripMenuItem.Text = "&Customize";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.optionsToolStripMenuItem.Text = "&Options";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contentsToolStripMenuItem,
-            this.indexToolStripMenuItem,
-            this.searchToolStripMenuItem,
-            this.toolStripSeparator5,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
-            // contentsToolStripMenuItem
-            // 
-            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.contentsToolStripMenuItem.Text = "&Contents";
-            // 
-            // indexToolStripMenuItem
-            // 
-            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.indexToolStripMenuItem.Text = "&Index";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.searchToolStripMenuItem.Text = "&Search";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(121, 6);
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "&About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // BackButton
             // 
@@ -710,36 +587,32 @@
             this.Skill1Label.AutoSize = true;
             this.Skill1Label.Location = new System.Drawing.Point(195, 0);
             this.Skill1Label.Name = "Skill1Label";
-            this.Skill1Label.Size = new System.Drawing.Size(68, 23);
+            this.Skill1Label.Size = new System.Drawing.Size(0, 23);
             this.Skill1Label.TabIndex = 1;
-            this.Skill1Label.Text = "label2";
             // 
             // Skill2Label
             // 
             this.Skill2Label.AutoSize = true;
             this.Skill2Label.Location = new System.Drawing.Point(195, 84);
             this.Skill2Label.Name = "Skill2Label";
-            this.Skill2Label.Size = new System.Drawing.Size(68, 23);
+            this.Skill2Label.Size = new System.Drawing.Size(0, 23);
             this.Skill2Label.TabIndex = 1;
-            this.Skill2Label.Text = "label2";
             // 
             // Skill3Label
             // 
             this.Skill3Label.AutoSize = true;
             this.Skill3Label.Location = new System.Drawing.Point(195, 168);
             this.Skill3Label.Name = "Skill3Label";
-            this.Skill3Label.Size = new System.Drawing.Size(68, 23);
+            this.Skill3Label.Size = new System.Drawing.Size(0, 23);
             this.Skill3Label.TabIndex = 1;
-            this.Skill3Label.Text = "label2";
             // 
             // Skill4Label
             // 
             this.Skill4Label.AutoSize = true;
             this.Skill4Label.Location = new System.Drawing.Point(195, 252);
             this.Skill4Label.Name = "Skill4Label";
-            this.Skill4Label.Size = new System.Drawing.Size(68, 23);
+            this.Skill4Label.Size = new System.Drawing.Size(0, 23);
             this.Skill4Label.TabIndex = 1;
-            this.Skill4Label.Text = "label2";
             // 
             // GenerateSkillsButton
             // 
@@ -753,6 +626,92 @@
             this.GenerateSkillsButton.TabIndex = 2;
             this.GenerateSkillsButton.Text = "Generate Skills";
             this.GenerateSkillsButton.UseVisualStyleBackColor = true;
+            this.GenerateSkillsButton.Click += new System.EventHandler(this.GenerateSkillsButton_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
+            // CharacterTableLayoutPanel
+            // 
+            this.CharacterTableLayoutPanel.ColumnCount = 4;
+            this.CharacterTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CharacterTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CharacterTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CharacterTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CharacterTableLayoutPanel.Controls.Add(this.CharacterSkill2Label, 1, 1);
+            this.CharacterTableLayoutPanel.Controls.Add(this.CharacterLastNameLabel, 0, 1);
+            this.CharacterTableLayoutPanel.Controls.Add(this.CharacterFirstNameLabel, 0, 0);
+            this.CharacterTableLayoutPanel.Controls.Add(this.CharacterSkill1Label, 1, 0);
+            this.CharacterTableLayoutPanel.Controls.Add(this.CharacterSkill3Label, 1, 2);
+            this.CharacterTableLayoutPanel.Controls.Add(this.CharacterSkill4Label, 1, 3);
+            this.CharacterTableLayoutPanel.Location = new System.Drawing.Point(8, 52);
+            this.CharacterTableLayoutPanel.Name = "CharacterTableLayoutPanel";
+            this.CharacterTableLayoutPanel.RowCount = 4;
+            this.CharacterTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CharacterTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CharacterTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CharacterTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CharacterTableLayoutPanel.Size = new System.Drawing.Size(760, 300);
+            this.CharacterTableLayoutPanel.TabIndex = 2;
+            // 
+            // CharacterLastNameLabel
+            // 
+            this.CharacterLastNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CharacterLastNameLabel.AutoSize = true;
+            this.CharacterLastNameLabel.Location = new System.Drawing.Point(3, 75);
+            this.CharacterLastNameLabel.Name = "CharacterLastNameLabel";
+            this.CharacterLastNameLabel.Size = new System.Drawing.Size(184, 75);
+            this.CharacterLastNameLabel.TabIndex = 0;
+            this.CharacterLastNameLabel.Text = "Last Name";
+            this.CharacterLastNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CharacterFirstNameLabel
+            // 
+            this.CharacterFirstNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CharacterFirstNameLabel.AutoSize = true;
+            this.CharacterFirstNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.CharacterFirstNameLabel.Name = "CharacterFirstNameLabel";
+            this.CharacterFirstNameLabel.Size = new System.Drawing.Size(184, 75);
+            this.CharacterFirstNameLabel.TabIndex = 0;
+            this.CharacterFirstNameLabel.Text = "First Name";
+            this.CharacterFirstNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CharacterSkill1Label
+            // 
+            this.CharacterSkill1Label.AutoSize = true;
+            this.CharacterSkill1Label.Location = new System.Drawing.Point(193, 0);
+            this.CharacterSkill1Label.Name = "CharacterSkill1Label";
+            this.CharacterSkill1Label.Size = new System.Drawing.Size(0, 23);
+            this.CharacterSkill1Label.TabIndex = 1;
+            // 
+            // CharacterSkill2Label
+            // 
+            this.CharacterSkill2Label.AutoSize = true;
+            this.CharacterSkill2Label.Location = new System.Drawing.Point(193, 75);
+            this.CharacterSkill2Label.Name = "CharacterSkill2Label";
+            this.CharacterSkill2Label.Size = new System.Drawing.Size(0, 23);
+            this.CharacterSkill2Label.TabIndex = 3;
+            // 
+            // CharacterSkill3Label
+            // 
+            this.CharacterSkill3Label.AutoSize = true;
+            this.CharacterSkill3Label.Location = new System.Drawing.Point(193, 150);
+            this.CharacterSkill3Label.Name = "CharacterSkill3Label";
+            this.CharacterSkill3Label.Size = new System.Drawing.Size(0, 23);
+            this.CharacterSkill3Label.TabIndex = 4;
+            // 
+            // CharacterSkill4Label
+            // 
+            this.CharacterSkill4Label.AutoSize = true;
+            this.CharacterSkill4Label.Location = new System.Drawing.Point(193, 225);
+            this.CharacterSkill4Label.Name = "CharacterSkill4Label";
+            this.CharacterSkill4Label.Size = new System.Drawing.Size(0, 23);
+            this.CharacterSkill4Label.TabIndex = 5;
             // 
             // CharacterGeneratorForm
             // 
@@ -780,6 +739,8 @@
             this.MainMenuStrip.PerformLayout();
             this.SkillTableLayoutPanel.ResumeLayout(false);
             this.SkillTableLayoutPanel.PerformLayout();
+            this.CharacterTableLayoutPanel.ResumeLayout(false);
+            this.CharacterTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -821,23 +782,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel SkillTableLayoutPanel;
         private System.Windows.Forms.Label SkillsLabel;
@@ -846,5 +791,14 @@
         private System.Windows.Forms.Label Skill3Label;
         private System.Windows.Forms.Label Skill4Label;
         private System.Windows.Forms.Button GenerateSkillsButton;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.TableLayoutPanel CharacterTableLayoutPanel;
+        private System.Windows.Forms.Label CharacterLastNameLabel;
+        private System.Windows.Forms.Label CharacterFirstNameLabel;
+        private System.Windows.Forms.Label CharacterSkill1Label;
+        private System.Windows.Forms.Label CharacterSkill2Label;
+        private System.Windows.Forms.Label CharacterSkill3Label;
+        private System.Windows.Forms.Label CharacterSkill4Label;
     }
 }

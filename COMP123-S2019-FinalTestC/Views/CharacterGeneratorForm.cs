@@ -14,6 +14,7 @@ namespace COMP123_S2019_FinalTestC.Views
     {
         List<string> firstNames = new List<string>();
         List<string> lastNames = new List<string>();
+        List<string> SkillsList = new List<string>();
 
 
         public CharacterGeneratorForm()
@@ -107,18 +108,17 @@ namespace COMP123_S2019_FinalTestC.Views
             Program.identity.LastName = LastNameDataLabel.Text;
 
             GenerateNumber();
-            Program.skill.Name = StrengthLabel.Text;
-            Program.skill.Level = Convert.ToInt32(StrengthDataLabel.Text);
-            Program.skill.Name = DexterityLabel.Text;
-            Program.skill.Level = Convert.ToInt32(DexterityDataLabel.Text);
-            Program.skill.Name = EnduranceLabel.Text;
-            Program.skill.Level = Convert.ToInt32(EnduranceDataLabel.Text);
-            Program.skill.Name = IntellectLabel.Text;
-            Program.skill.Level = Convert.ToInt32(IntellectDataLabel.Text);
-            Program.skill.Name = EducationLabel.Text;
-            Program.skill.Level = Convert.ToInt32(EducationDataLabel.Text);
-            Program.skill.Name = SocialStandingLabel.Text;
-            Program.skill.Level = Convert.ToInt32(SocialStandingDataLabel.Text);
+            Program.character.Dexterity= DexterityLabel.Text;
+            Program.character.Strength= StrengthLabel.Text;
+            Program.character.Education= EducationLabel.Text;
+            Program.character.Endurance= EnduranceLabel.Text;
+            Program.character.SocialStanding= SocialStandingLabel.Text;
+            Program.character.Intellect= IntellectLabel.Text;
+
+
+
+            LoadSkills();
+            GenerateRandomSkills();
 
         }
 
@@ -163,15 +163,15 @@ namespace COMP123_S2019_FinalTestC.Views
                 MessageBox.Show("ERROR" + exception.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //assign random Firstname and Lastname
+            
         }
 
         //This is GenerateNames method for generating random firstname and lastname.
         private void GenerateNames()
         {
             Random random = new Random();
-            int indexOffirstName = random.Next(0, firstNames.Count + 1);
-            int indexOfflastName = random.Next(0, lastNames.Count + 1);
+            int indexOffirstName = random.Next(0, firstNames.Count);
+            int indexOfflastName = random.Next(0, lastNames.Count);
             FirstNameDataLabel.Text = firstNames[indexOffirstName];
             LastNameDataLabel.Text = lastNames[indexOfflastName];
         }
@@ -200,10 +200,77 @@ namespace COMP123_S2019_FinalTestC.Views
             SocialStandingDataLabel.Text = socialStandingLevel.ToString();
         }
 
+        private void LoadSkills()
+        {
+            try
+            {
+                //Open the stream for reading
+                using (StreamReader skillsInputStream = new StreamReader(
+                    File.Open("../../Data/skills.txt", FileMode.Open)))
+                {
+                    while (skillsInputStream.ReadLine() != null)
+                    {
+                        SkillsList.Add(skillsInputStream.ReadLine());
+                    }
+
+
+                    //cleanup
+                    skillsInputStream.Close();
+                    skillsInputStream.Dispose();
+                }
+               
+            }
+            catch (IOException exception)
+            {
+                Debug.WriteLine("ERROR:" + exception.Message);
+                MessageBox.Show("ERROR" + exception.Message, "ERROR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GenerateRandomSkills()
+        {
+            Random random = new Random();
+            int indexOfskill1 = random.Next(0, SkillsList.Count);
+            Skill1Label.Text = SkillsList[indexOfskill1];
+            int indexOfskill2 = random.Next(0, SkillsList.Count);
+            Skill2Label.Text = SkillsList[indexOfskill2];
+            int indexOfskill3 = random.Next(0, SkillsList.Count);
+            Skill3Label.Text = SkillsList[indexOfskill3];
+            int indexOfskill4 = random.Next(0, SkillsList.Count);
+            Skill4Label.Text = SkillsList[indexOfskill4];
+
+        }
+
         //This is a event handler for GenerateAbilityButton_Click event.
         private void GenerateAbilityButton_Click(object sender, EventArgs e)
         {
             GenerateNumber();
+        }
+
+        private void GenerateSkillsButton_Click(object sender, EventArgs e)
+        {
+            GenerateRandomSkills();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.aboutForm.ShowDialog();
         }
     }
 }
