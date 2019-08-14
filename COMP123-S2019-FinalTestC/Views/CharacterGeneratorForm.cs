@@ -15,6 +15,7 @@ namespace COMP123_S2019_FinalTestC.Views
         List<string> firstNames = new List<string>();
         List<string> lastNames = new List<string>();
 
+
         public CharacterGeneratorForm()
         {
             InitializeComponent();
@@ -97,11 +98,31 @@ namespace COMP123_S2019_FinalTestC.Views
 
         }
 
+        //This is a event handler for CharacterGeneratorForm_Load event.
         private void CharacterGeneratorForm_Load(object sender, EventArgs e)
         {
             LoadNames();
             GenerateNames();
+            Program.identity.FirstName = FirstNameDataLabel.Text;
+            Program.identity.LastName = LastNameDataLabel.Text;
+
+            GenerateNumber();
+            Program.skill.Name = StrengthLabel.Text;
+            Program.skill.Level = Convert.ToInt32(StrengthDataLabel.Text);
+            Program.skill.Name = DexterityLabel.Text;
+            Program.skill.Level = Convert.ToInt32(DexterityDataLabel.Text);
+            Program.skill.Name = EnduranceLabel.Text;
+            Program.skill.Level = Convert.ToInt32(EnduranceDataLabel.Text);
+            Program.skill.Name = IntellectLabel.Text;
+            Program.skill.Level = Convert.ToInt32(IntellectDataLabel.Text);
+            Program.skill.Name = EducationLabel.Text;
+            Program.skill.Level = Convert.ToInt32(EducationDataLabel.Text);
+            Program.skill.Name = SocialStandingLabel.Text;
+            Program.skill.Level = Convert.ToInt32(SocialStandingDataLabel.Text);
+
         }
+
+        //This is LoadNames method for loading firstname and lastname from txt file.
         private void LoadNames()
         {
             //List<string> firstNames = new List<string>();
@@ -144,6 +165,8 @@ namespace COMP123_S2019_FinalTestC.Views
             }
             //assign random Firstname and Lastname
         }
+
+        //This is GenerateNames method for generating random firstname and lastname.
         private void GenerateNames()
         {
             Random random = new Random();
@@ -153,9 +176,34 @@ namespace COMP123_S2019_FinalTestC.Views
             LastNameDataLabel.Text = lastNames[indexOfflastName];
         }
 
+        //This is a event handler for CharacterGeneratorForm_FormClosing evetn.
         private void CharacterGeneratorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        //This is GenerateNumber method for generating random number for abilities.
+        private void GenerateNumber()
+        {
+            Random random = new Random();
+            int strengthLevel = random.Next(1, 16);
+            StrengthDataLabel.Text = strengthLevel.ToString();
+            int dexterityLevel = random.Next(1, 16);
+            DexterityDataLabel.Text = dexterityLevel.ToString();
+            int enduranceLevel = random.Next(1, 16);
+            EnduranceDataLabel.Text = enduranceLevel.ToString();
+            int intellectLevel = random.Next(1, 16);
+            IntellectDataLabel.Text = intellectLevel.ToString();
+            int educationLevel = random.Next(1, 16);
+            EducationDataLabel.Text = educationLevel.ToString();
+            int socialStandingLevel = random.Next(1, 16);
+            SocialStandingDataLabel.Text = socialStandingLevel.ToString();
+        }
+
+        //This is a event handler for GenerateAbilityButton_Click event.
+        private void GenerateAbilityButton_Click(object sender, EventArgs e)
+        {
+            GenerateNumber();
         }
     }
 }

@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * Student name:
- * Student Id:
+ * Student name:Chuyun Yang
+ * Student Id:301038102
  * description: This is the main container class for the applcation.
  */
 

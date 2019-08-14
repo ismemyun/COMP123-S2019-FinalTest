@@ -415,6 +415,7 @@
             this.GenerateAbilityButton.TabIndex = 2;
             this.GenerateAbilityButton.Text = "Generate Abilities";
             this.GenerateAbilityButton.UseVisualStyleBackColor = true;
+            this.GenerateAbilityButton.Click += new System.EventHandler(this.GenerateAbilityButton_Click);
             // 
             // SkillPage
             // 
